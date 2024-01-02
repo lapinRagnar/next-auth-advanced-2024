@@ -9,6 +9,11 @@ npx shadcn-ui@latest add card
 ```
 
 
+## pour la form
+```
+npx shadcn-ui@latest add form
+npx shadcn-ui@latest add input
+```
 
 
 
