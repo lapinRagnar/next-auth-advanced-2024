@@ -5,7 +5,9 @@ export default function Home() {
   return (
     <div className="text-green-500">
       salut
-      <Button>
+      <Button
+        variant={"maVariante"}
+      >
         cliquer moi
       </Button>
     </div>
