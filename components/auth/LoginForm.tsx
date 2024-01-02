@@ -1,7 +1,15 @@
+import { CardWrapper } from "@/components/auth/CardWrapper"
 
 export const LoginForm = () => {
   return (
-    <div>LoginForm</div>
+    <CardWrapper
+      headerLabel="Welcome Back"
+      backButtonLabel="Don't have an account?"
+      backButtonHref="/auth/register"
+      showSocial
+    >
+      LoginForm
+    </CardWrapper>
   )
 }
 
