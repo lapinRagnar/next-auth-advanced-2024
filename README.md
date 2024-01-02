@@ -3,6 +3,10 @@
 
 # installation shadcn
 
+```
+npx shadcn-ui@latest add card
+
+```
 
 
 
