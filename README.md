@@ -31,6 +31,14 @@ npx prisma generate
 npx prisma db push  
 ```
 
+pour reinitialiser la bdd prisma
+
+```
+npx prisma migrate reset 
+npx prisma db push  
+
+```
+
 
 ## documentation next auth v5
 https://authjs.dev/
