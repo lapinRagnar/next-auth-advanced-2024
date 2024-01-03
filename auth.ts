@@ -8,6 +8,10 @@ import { db } from "@/lib/db"
 import { getUserById } from "@/data/user"
 
 
+
+/**
+ * parmet d'ajouter le type role a la session - pour typescript
+ */
 declare module "@auth/core/types" {
   /**
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context

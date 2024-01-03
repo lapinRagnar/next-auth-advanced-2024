@@ -61,6 +61,10 @@ https://authjs.dev/guides/upgrade-to-v5
 npm install next-auth@beta
 ```
 
+pour voir les auth configurer :
+http://localhost:3000/api/auth/providers
+
+
 
 # le tuto
 https://youtube.com/watch?v=1MTyCvS05V4&list=PLfe-EbMNSdYrtApoOiy0TkNPOLV-xyF97&index=28&t=134s
