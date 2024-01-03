@@ -34,6 +34,18 @@ export const {
   signOut,
 } = NextAuth({
   // providers: [GitHub],
+
+  events: {
+    async linkAccount({ user }) {
+      await db.user.update({
+        where: { id: user.id },
+        data: {
+          emailVerified: new Date(),
+        },
+      })
+    }
+  },
+
   callbacks: {
 
     // async signIn({ user }) {
