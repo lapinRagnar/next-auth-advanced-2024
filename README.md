@@ -36,7 +36,15 @@ npx prisma db push
 https://authjs.dev/
 
 #### installation du prisma adapter
+```
+npm i @auth/prisma-adapter
+```
 
+#### pour bcrypt
+```
+npm i bcrypt
+npm i -D @types/bcrypt
+```
 
 # le tuto
 https://youtube.com/watch?v=1MTyCvS05V4&list=PLfe-EbMNSdYrtApoOiy0TkNPOLV-xyF97&index=28&t=134s
