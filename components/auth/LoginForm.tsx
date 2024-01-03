@@ -51,7 +51,8 @@ export const LoginForm = () => {
                       placeholder='john.doe@example.com'
                       type='email'
                     />  
-                  </FormControl>                  
+                  </FormControl>    
+                  <FormMessage />              
                 </FormItem>
 
               )}
