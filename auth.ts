@@ -32,6 +32,18 @@ export const {
   // providers: [GitHub],
   callbacks: {
 
+    async signIn({ user }) {
+
+      const existingUser = await getUserById(user.id)
+
+      /**
+       * Si l'email n'est pas veriffié, on ne peut pas se connecter
+       */
+      if (!existingUser || !existingUser.emailVerified) return false
+
+      return true
+    },
+
     async session({ token, session }) {
 
       console.log({sessionToken : token, session});
