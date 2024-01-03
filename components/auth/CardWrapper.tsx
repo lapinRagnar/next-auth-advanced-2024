@@ -41,7 +41,7 @@ export const CardWrapper = ({
         </CardFooter>
       )}
 
-      <CardFooter>
+      <CardFooter className="w-full flex justify-center items-center">
         <BackButton 
           label={backButtonLabel}
           href={backButtonHref}
