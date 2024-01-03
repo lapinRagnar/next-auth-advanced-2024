@@ -22,16 +22,20 @@ npm i @prisma/client
 npx prisma init
 ```
 
-quand on a ajouter une table dans la database de prisma, on fait :
+## on utilise neon comme database
+- on crée un compte, et on configure la db
+
+quand on a ajouté une table User dans la database de prisma, on fait :
 ```
 npx prisma generate
 npx prisma db push  
 ```
 
 
-## on utilise neon comme database
+## documentation next auth v5
+https://authjs.dev/
 
-
+#### installation du prisma adapter
 
 
 # le tuto
