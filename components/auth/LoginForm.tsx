@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/form'
 
 import { CardWrapper } from "@/components/auth/CardWrapper"
+import { Input } from '@/components/ui/input'
 
 export const LoginForm = () => {
   const form = useForm<z.infer<typeof LoginSchema>>({
@@ -32,7 +33,32 @@ export const LoginForm = () => {
       backButtonHref="/auth/register"
       showSocial
     >
-      LoginForm
+      <Form {...form}>
+        <form 
+          onSubmit={form.handleSubmit(() => {})}
+          className='space-y-6'  
+        >
+          <div className='space-y-4'>
+            <FormField 
+              control={form.control}
+              name='email'
+              render={({field}) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input 
+                      {...field}
+                      placeholder='john.doe@example.com'
+                      type='email'
+                    />  
+                  </FormControl>                  
+                </FormItem>
+
+              )}
+            />
+          </div>
+        </form>
+      </Form>
     </CardWrapper>
   )
 }
