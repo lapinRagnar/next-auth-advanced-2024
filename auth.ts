@@ -32,17 +32,17 @@ export const {
   // providers: [GitHub],
   callbacks: {
 
-    async signIn({ user }) {
+    // async signIn({ user }) {
 
-      const existingUser = await getUserById(user.id)
+    //   const existingUser = await getUserById(user.id)
 
-      /**
-       * Si l'email n'est pas veriffié, on ne peut pas se connecter
-       */
-      if (!existingUser || !existingUser.emailVerified) return false
+    //   /**
+    //    * Si l'email n'est pas veriffié, on ne peut pas se connecter
+    //    */
+    //   if (!existingUser || !existingUser.emailVerified) return false
 
-      return true
-    },
+    //   return true
+    // },
 
     async session({ token, session }) {
 
