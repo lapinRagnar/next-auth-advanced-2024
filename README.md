@@ -15,6 +15,23 @@ npx shadcn-ui@latest add form
 npx shadcn-ui@latest add input
 ```
 
+## setup prisma
+```
+npm i -D prisma
+npm i @prisma/client
+npx prisma init
+```
+
+quand on a ajouter une table dans la database de prisma, on fait :
+```
+npx prisma generate
+npx prisma db push  
+```
+
+
+## on utilise neon comme database
+
+
 
 
 # le tuto
