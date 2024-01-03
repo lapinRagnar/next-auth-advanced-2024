@@ -46,8 +46,17 @@ npm i bcrypt
 npm i -D @types/bcrypt
 ```
 
+## installation et configuration de next auth v5 - login
+https://authjs.dev/guides/upgrade-to-v5
+
+```
+npm install next-auth@beta
+```
+
+
 # le tuto
 https://youtube.com/watch?v=1MTyCvS05V4&list=PLfe-EbMNSdYrtApoOiy0TkNPOLV-xyF97&index=28&t=134s
+https://github.com/AntonioErdeljac/next-auth-v5-advanced-guide
 
 
 
