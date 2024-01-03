@@ -1,6 +1,9 @@
 'use client'
 
 import * as z from 'zod'
+
+import { useTransition } from 'react'
+
 import {useForm} from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { LoginSchema } from '@/schemas'
@@ -21,6 +24,9 @@ import { FormSuccess } from '@/components/FormSuccess'
 import { login } from '@/actions/login'
 
 export const LoginForm = () => {
+
+  const [isPending, startTransition] = useTransition()
+
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -30,8 +36,9 @@ export const LoginForm = () => {
   })
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-    console.log(values)
-    login(values)
+    startTransition(() => {
+      login(values)
+    })
     
   }
 
@@ -60,6 +67,7 @@ export const LoginForm = () => {
                       {...field}
                       placeholder='john.doe@example.com'
                       type='email'
+                      disabled={isPending}
                     />  
                   </FormControl>    
                   <FormMessage />              
@@ -79,6 +87,7 @@ export const LoginForm = () => {
                       {...field}
                       placeholder='********'
                       type='password'
+                      disabled={isPending}
                     />  
                   </FormControl>    
                   <FormMessage />              
