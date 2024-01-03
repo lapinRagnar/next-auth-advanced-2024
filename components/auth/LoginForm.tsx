@@ -15,6 +15,7 @@ import {
 
 import { CardWrapper } from "@/components/auth/CardWrapper"
 import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
 
 export const LoginForm = () => {
   const form = useForm<z.infer<typeof LoginSchema>>({
@@ -78,6 +79,9 @@ export const LoginForm = () => {
             />
 
           </div>
+
+          <Button type='submit' className="w-full">Login</Button>
+
         </form>
       </Form>
     </CardWrapper>
