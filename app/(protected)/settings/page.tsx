@@ -1,8 +1,20 @@
-import { auth, signOut } from '@/auth'
+'use client'
+
+import { useSession, signOut } from "next-auth/react"
+
+// import { auth, signOut } from '@/auth'
 
 
-const SettingsPage = async () => {
-  const session = await auth()
+
+
+const SettingsPage =  () => {
+  // const session = await auth()
+
+  const session = useSession()
+
+  const onClick = () => {
+    signOut()
+  }
 
   
 
@@ -13,13 +25,20 @@ const SettingsPage = async () => {
       
       {JSON.stringify(session)}
 
-      <form action={async () => {
+{/*       <form action={async () => {
         "use server"
         await signOut()
       }}>
         <button className='bg-red-700 text-white p-3 rounded-md' type='submit'>Logout</button>
-      </form>
+      </form> */}
     
+      <button 
+        className="bg-red-700 text-white p-3 rounded-md"
+        onClick={onClick}  
+      >
+        se deconnecter
+      </button>
+
     </div>
     
   )
