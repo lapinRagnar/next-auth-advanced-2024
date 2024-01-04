@@ -65,6 +65,15 @@ pour voir les auth configurer :
 http://localhost:3000/api/auth/providers
 
 
+## pour l'envoie de mail de verification
+https://resend.com/
+
+```
+npm install resend
+
+```
+
+
 
 # le tuto
 https://youtube.com/watch?v=1MTyCvS05V4&list=PLfe-EbMNSdYrtApoOiy0TkNPOLV-xyF97&index=28&t=134s

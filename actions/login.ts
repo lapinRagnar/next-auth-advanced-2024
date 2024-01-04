@@ -9,6 +9,12 @@ import { LoginSchema } from '@/schemas'
 
 import { signIn } from '@/auth'
 
+import { getUserByEmail } from '@/data/user'
+
+import { generateVerificationToken } from '@/lib/tokens'
+import { sendVerificationEmail } from '@/lib/mail'
+
+
 export const login = async (values: z.infer<typeof LoginSchema>) => {
   console.log(values)
   const validatedFields = LoginSchema.parse(values)
@@ -26,6 +32,26 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
   }
 
   const { email, password } = validatedFields
+
+
+  const existingUser = await getUserByEmail(email)
+
+  if (!existingUser || !existingUser.email || !existingUser.password) {
+    return { error: "le mail n'existe pas!" }
+  }
+
+  /**
+   * generer un mail de confirmation
+   */
+  if (!existingUser.emailVerified) {
+    const verificationToken = await generateVerificationToken(existingUser.email)
+
+    await sendVerificationEmail(verificationToken.email, verificationToken.token)
+
+    return { success: "Email de confirmation envoyé!" }
+  }
+
+
 
   try {
     await signIn("credentials", {
