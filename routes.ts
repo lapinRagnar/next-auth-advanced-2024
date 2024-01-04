@@ -7,7 +7,8 @@ import { login } from '@/actions/login'
  * @type {string[]}
  */
 export const publicRoutes = [
-  "/"
+  "/",
+  "/auth/new-verification"
 ]
 
 
