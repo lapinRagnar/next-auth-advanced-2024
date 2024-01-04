@@ -2,6 +2,7 @@
 
 import * as z from 'zod'
 
+import Link from 'next/link'
 import { useState, useTransition } from 'react'
 
 import { useSearchParams } from 'next/navigation'
@@ -105,7 +106,19 @@ export const LoginForm = () => {
                       type='password'
                       disabled={isPending}
                     />  
-                  </FormControl>    
+                  </FormControl>
+
+                  <Button
+                    size={'sm'}
+                    variant={'link'}
+                    asChild
+                    className='px-0 font-normal'
+                  >
+                    <Link href={"/auth/reset"}>
+                      Forgot password
+                    </Link>
+                  </Button>
+
                   <FormMessage />              
                 </FormItem>
 
