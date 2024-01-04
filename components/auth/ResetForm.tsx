@@ -2,13 +2,12 @@
 
 import * as z from 'zod'
 
-import Link from 'next/link'
 import { useState, useTransition } from 'react'
 
 
 import {useForm} from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { LoginSchema } from '@/schemas'
+import { ResetSchema } from '@/schemas'
 import {
   Form,
   FormControl,
@@ -32,27 +31,29 @@ export const ResetForm = () => {
   const [error, setError] = useState<string | undefined>('') 
   const [success, setSuccess] = useState<string | undefined>('') 
 
-  const form = useForm<z.infer<typeof LoginSchema>>({
-    resolver: zodResolver(LoginSchema),
+  const form = useForm<z.infer<typeof ResetSchema>>({
+    resolver: zodResolver(ResetSchema),
     defaultValues: {
       email: '',
-      password: ''
     }
   })
 
-  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+  const onSubmit = (values: z.infer<typeof ResetSchema>) => {
 
     setError('')
     setSuccess('')
 
-    startTransition(() => {
-      login(values)
-        .then((data) => {
-          setError(data?.error)
-          // TODO: add when we add 2FA
-          setSuccess(data?.success)
-        })
-    })
+    console.log(values)
+    
+
+    // startTransition(() => {
+    //   login(values)
+    //     .then((data) => {
+    //       setError(data?.error)
+    //       // TODO: add when we add 2FA
+    //       setSuccess(data?.success)
+    //     })
+    // })
     
   }
 
