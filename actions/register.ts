@@ -13,35 +13,19 @@ import { generateVerificationToken } from '@/lib/tokens'
 import { sendVerificationEmail } from '@/lib/mail'
 
 export const register = async (values: z.infer<typeof RegisterSchema>) => {
-  console.log(values)
-  const validatedFields = RegisterSchema.parse(values)
 
-  if (!validatedFields.name) {
-    return {
-      error: '***Champ name invalide - 4 caractères minimum !***'
-    }
-  }
+  const validatedFields = RegisterSchema.safeParse(values)
 
-  if (!validatedFields.email) {
-    return {
-      error: '***Champ email invalide***'
-    }
-  }
-  
-  if (!validatedFields.password) {
-    return {
-      error: '***Champ password invalide***'
-    }
-  }
+  if (!validatedFields.success) return { error: '***Champ invalide***'}
 
-  const { name, email,password } = validatedFields
+  const { name, email, password } = validatedFields.data
+
   const hashedPassword = await bcrypt.hash(password, 10)
 
   const existingUser = await getUserByEmail(email)
 
-  if (existingUser) {
-    return { error: "Cet email existe déjà!"}
-  }
+  if (existingUser) return { error: "Cet email existe déjà!"}
+
 
   await db.user.create({
     data: {
