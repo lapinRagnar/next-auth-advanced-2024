@@ -22,7 +22,7 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { FormError } from '@/components/FormError'
 import { FormSuccess } from '@/components/FormSuccess'
-import { login } from '@/actions/login'
+import { reset } from '@/actions/reset'
 
 export const ResetForm = () => {
 
@@ -46,14 +46,14 @@ export const ResetForm = () => {
     console.log(values)
     
 
-    // startTransition(() => {
-    //   login(values)
-    //     .then((data) => {
-    //       setError(data?.error)
-    //       // TODO: add when we add 2FA
-    //       setSuccess(data?.success)
-    //     })
-    // })
+    startTransition(() => {
+      reset(values)
+        .then((data) => {
+          setError(data?.error)
+          // TODO: add when we add 2FA
+          setSuccess(data?.success)
+        })
+    })
     
   }
 
