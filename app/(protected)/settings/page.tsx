@@ -1,5 +1,7 @@
 'use client'
 
+import { logout } from "@/actions/logout"
+import { useCurrentUser } from "@/hooks/useCurrentUser"
 import { useSession, signOut } from "next-auth/react"
 
 // import { auth, signOut } from '@/auth'
@@ -10,10 +12,11 @@ import { useSession, signOut } from "next-auth/react"
 const SettingsPage =  () => {
   // const session = await auth()
 
-  const session = useSession()
+  const user = useCurrentUser()
 
   const onClick = () => {
-    signOut()
+    // signOut()
+    logout()
   }
 
   
@@ -23,7 +26,9 @@ const SettingsPage =  () => {
       
       <div>Settings Page</div>
       
-      {JSON.stringify(session)}
+      {/* {JSON.stringify(session)} */}
+
+      { JSON.stringify(user) }
 
 {/*       <form action={async () => {
         "use server"
