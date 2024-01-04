@@ -10,7 +10,8 @@ export const ResetSchema = z.object({
 
 export const LoginSchema = z.object({
   email: z.string().email({ message: '***Champ obligatoire***' }),
-  password: z.string().min(1, { message: '***Champ obligatoire***' })
+  password: z.string().min(1, { message: '***Champ obligatoire***' }),
+  code: z.optional(z.string())
 })
 
 export const RegisterSchema = z.object({
