@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 // import { currentRole } from "@/lib/auth"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { UserRole } from "@prisma/client"
+import { toast } from "sonner"
 
 
 
@@ -16,8 +17,9 @@ const AdminPage = () => {
       .then((Response) => {
         if (Response.ok) {
           console.log("ok")
+          toast.success("Tu es admin, tu es autorisé à utiliser API Route !")
         } else {
-          console.error("pas ok")
+          toast.error("Ooops, Tu n'est pas admin, tu ne peux pas utiliser API Route !")
         }
       })
   }
