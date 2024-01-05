@@ -8,21 +8,12 @@ const ServerPage = async () => {
   const user = await currentUser()
 
   return (
-    <div>
+    <div className='flex w-full items-center justify-center'>
 
       <UserInfo  
         user={user}
         label="Server Component - 🌍 - User Info"
       />
-
-      <h1 className='text-5xl text-gray-200 mb-5 mt-11'>Exemple de fetch de session sur un server component</h1>
-      <div className='text-gray-100'>
-        {JSON.stringify(session?.user)}
-      </div>
-
-      <div className='text-green-500'>
-        {JSON.stringify(user)}
-      </div>
 
     </div>
   )

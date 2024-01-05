@@ -8,6 +8,7 @@ import { db } from "@/lib/db"
 import { getUserById } from "@/data/user"
 
 import { getTwoFactorConfirmationByUserId } from "@/data/twoFactorConfirmation"
+import { getAccountByUserId } from "./data/account"
 
 
 
@@ -73,7 +74,7 @@ export const {
       if (!existingUser || !existingUser.emailVerified) return false
 
 
-      // TODO : add 2FA check
+      // TODO : add 2FA check - c fait
       if (existingUser.isTwoFactorEnabled) {
         const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(existingUser.id)
 
@@ -95,7 +96,6 @@ export const {
 
     async session({ token, session }) {
 
-      console.log({sessionToken : token, session});
 
       if (token.sub && session.user) {
         session.user.id = token.sub
@@ -108,12 +108,23 @@ export const {
       if (session.user) {
         session.user.isTwoFactorEnabled = token.isTwoFactorEnabled as boolean
       }
+
+      /**
+       * pour mettre à jour le nom, l'email et isOauth automatiquement quand on les modifie
+       */
+      if (session.user) {
+        session.user.name = token.name
+        session.user.email = token.email
+        session.user.isOauth = token.isOauth as boolean
+      }
       
       return session
     },
     async jwt({ token}) {
-      console.log({token})
+
+
       token.customField = "custom value"
+      
 
       if (!token.sub) return token
 
@@ -121,9 +132,13 @@ export const {
 
       if (!existingUser) return token
 
-      token.role = existingUser.role
+      const existingAccount = await getAccountByUserId(existingUser.id)
 
+      token.role = existingUser.role
       token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled
+      token.name = existingUser.name
+      token.email = existingUser.email
+      token.isOauth = !!existingAccount               // le !! permet de caster en boolean
       
       return token
     }
