@@ -90,7 +90,9 @@ https://youtube.com/watch?v=1MTyCvS05V4&list=PLfe-EbMNSdYrtApoOiy0TkNPOLV-xyF97&
 https://github.com/AntonioErdeljac/next-auth-v5-advanced-guide
 
 
-
+# bug à resoudre
+- pour l'envoie de mail de verification : trouver un domaine pour pouvoir envoyer le mail à plusieurs personnes
+- sur resend l'envoie de mail est uniquement pour une personne
 
 
 
