@@ -25,19 +25,20 @@ export default {
 
     Credentials({
       async authorize(credentials) {
-        const validatedFields = LoginSchema.parse(credentials)
-
-        const { email, password } = validatedFields
-
-        const user = await getUserByEmail(email)
-
-        if (!user || !user.password) return null
-
-        const passwordMatch = await bcrypt.compare(password, user.password)
         
-        if (passwordMatch) return user
+        const validatedFields = LoginSchema.safeParse(credentials)
+
+        if (validatedFields.success) {
+
+          const { email, password } = validatedFields.data
+          const user = await getUserByEmail(email)
+          if (!user || !user.password) return null
+          const passwordMatch = await bcrypt.compare(password, user.password)
+          if (passwordMatch) return user
+        }
 
         return null
+        
       }
     })
   ],
