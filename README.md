@@ -79,6 +79,12 @@ npm install resend
 npm i react-spinners
 ```
 
+
+# le demo sur vercel
+https://next-auth-v5-advanced-2024-neon-typescript-prisma-postgresql.vercel.app/
+
+
+
 # le tuto
 https://youtube.com/watch?v=1MTyCvS05V4&list=PLfe-EbMNSdYrtApoOiy0TkNPOLV-xyF97&index=28&t=134s
 https://github.com/AntonioErdeljac/next-auth-v5-advanced-guide
