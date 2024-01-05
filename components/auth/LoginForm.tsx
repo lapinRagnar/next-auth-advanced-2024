@@ -29,6 +29,9 @@ import { login } from '@/actions/login'
 export const LoginForm = () => {
 
   const searchParams = useSearchParams()
+
+  const callbackUrl = searchParams.get('callbackUrl')
+
   const urlError = searchParams.get('error') === "OAuthAccountNotLinked" ? "Le mail existe déjà avec un autre compte" : ""
 
   const [showTwoFactor, setShowTwoFactor] = useState(false)
@@ -50,7 +53,7 @@ export const LoginForm = () => {
     setSuccess('')
 
     startTransition(() => {
-      login(values)
+      login(values, callbackUrl)
         .then((data) => {
 
           if (data?.error) {
