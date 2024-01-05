@@ -49,7 +49,7 @@ export const Navbar = () => {
           asChild
           variant={pathname === '/settings' ? 'default' : 'outline'}
         >
-          <Link href={'/settings'}>Settings</Link>
+          <Link href={'/settings'} className="text-gray-600">Settings</Link>
         </Button>
 
       </div>
